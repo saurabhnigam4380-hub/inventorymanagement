@@ -120,7 +120,7 @@ DefaultTableModel model;
 
         lowStockButton.addActionListener(e -> showLowStockProducts());
 
-        
+
         setVisible(true);
 
     }
@@ -164,15 +164,12 @@ center.add(cards, BorderLayout.NORTH);
 
 String columns[] = {
 
-        "ID",
-
-        "Product",
-
-        "Category",
-
-        "Quantity",
-
-        "Price"
+    "S.No.",
+    "ID",
+    "Product",
+    "Category",
+    "Quantity",
+    "Price"
 
 };
 
@@ -244,22 +241,23 @@ private void loadProducts() {
 
         InventoryDAO dao = new InventoryDAO();
 
+        int serialNo = 1;
         int totalProducts = 0;
         int totalQuantity = 0;
         int lowStock = 0;
 
         for (Product p : dao.getAllProducts()) {
 
-            model.addRow(new Object[] {
+            model.addRow(new Object[]{
 
-                p.getId(),
-                p.getName(),
-                p.getCategory(),
-                p.getQuantity(),
-                p.getPrice()
+             serialNo++,
+              p.getId(),
+              p.getName(),
+              p.getCategory(),
+              p.getQuantity(),
+              p.getPrice()
 
-            });
-
+});
             // Update Statistics
             totalProducts++;
             totalQuantity += p.getQuantity();
@@ -329,21 +327,28 @@ private void showLowStockProducts() {
 
         InventoryDAO dao = new InventoryDAO();
 
+        int serialNo = 1;
+
         for (Product p : dao.getLowStockProducts()) {
 
             model.addRow(new Object[] {
+
+                serialNo++,
                 p.getId(),
                 p.getName(),
                 p.getCategory(),
                 p.getQuantity(),
                 p.getPrice()
+
             });
+
         }
 
     } catch (Exception e) {
         e.printStackTrace();
     }
 }
+
 private void deleteProduct() {
 
     try {
