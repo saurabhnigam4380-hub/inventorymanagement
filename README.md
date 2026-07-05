@@ -1,108 +1,147 @@
-# inventorymanagement
-for summer internship
-# 📦 Inventory Management System
+# Inventory Management System
 
-A Java-based Inventory Management System developed using **Core Java**, **JDBC**, and **MySQL**. The application allows users to manage inventory through a simple console-based interface with CRUD operations and stock management.
+A desktop-based **Inventory Management System** developed using **Core Java, Java Swing, JDBC, and MySQL**. The application helps manage inventory efficiently through a graphical user interface with complete CRUD operations and real-time database connectivity.
 
-## 🚀 Features
+---
 
-- ➕ Add new products
-- ✏️ Update product stock
-- ❌ Delete products
-- 🔍 Check stock availability
-- 📊 Generate inventory report
-- ⚠️ Low stock alert support
-- 💾 Data stored permanently using MySQL
+## Features
 
-## 🛠️ Technologies Used
+- Add New Product
+- Update Product Stock
+- Delete Product
+- Search Product
+- Generate Inventory Report
+- Dashboard with Live Statistics
+- Product Table with MySQL Data
+- Low Stock Monitoring
+- User-Friendly Java Swing GUI
 
-- Java
+---
+
+## Technologies Used
+
+- Core Java
+- Java Swing
 - JDBC
 - MySQL
-- SQL
 - Git & GitHub
+- VS Code
 
-## 📂 Project Structure
+---
+
+## Project Structure
 
 ```
-inventorymanagement/
-│── DBConnection.java
-│── InventoryApp.java
-│── InventoryDAO.java
-│── Product.java
-│── schema.sql
-│── README.md
+InventoryManagement/
+│
+├── InventoryApp.java
+├── InventoryGUI.java
+├── InventoryDAO.java
+├── DBConnection.java
+├── Product.java
+├── schema.sql
+└── README.md
 ```
 
-## 🗄️ Database Setup
+---
 
-1. Create the database using the SQL script:
+## Database
+
+Database Name:
+
+```
+inventory_db
+```
+
+Main Table:
+
+```
+products
+```
+
+Columns:
+
+- id
+- name
+- category
+- quantity
+- price
+- low_stock_threshold
+
+---
+
+## How to Run
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/saurabhnigam4380-hub/inventorymanagement.git
+```
+
+### 2. Create Database
+
+Open MySQL and execute:
 
 ```sql
-source schema.sql;
+source schema.sql
 ```
 
-2. Update the database credentials in `DBConnection.java`.
-
-Example:
-
-```java
-private static final String URL = "jdbc:mysql://localhost:3306/inventory_db";
-private static final String USER = "root";
-private static final String PASSWORD = "your_password";
-```
-
-## ▶️ How to Run
-
-Compile:
+### 3. Compile
 
 ```bash
-javac -cp ".;mysql-connector-j-9.7.0.jar" *.java
+javac *.java
 ```
 
-Run:
+### 4. Run Console Version
 
 ```bash
-java -cp ".;mysql-connector-j-9.7.0.jar" InventoryApp
+java InventoryApp
 ```
 
-## 📋 Menu
+### 5. Run GUI Version
 
-```
-1. Add Product
-2. Update Stock
-3. Delete Product
-4. Check Stock Availability
-5. Generate Report
-6. Exit
+```bash
+java -cp ".;mysql-connector-j-9.7.0.jar" InventoryGUI
 ```
 
-## 📸 Sample Output
+---
 
-```
-=========================================
- Welcome to the Inventory Management System
-=========================================
+## Functionalities
 
-1. Add Product
-2. Update Stock
-3. Delete Product
-4. Check Stock Availability
-5. Generate Report
-6. Exit
-```
+- Inventory Dashboard
+- Product Management
+- Live Database Connectivity
+- CRUD Operations
+- Inventory Statistics
+- Search Functionality
+- Report Generation
 
-## 📌 Future Improvements
+---
 
-- Java Swing GUI
+## Future Enhancements
+
 - Login Authentication
-- Barcode Scanner Support
-- Export Reports (PDF/Excel)
-- Search by Product Name
-- Sales Management Module
+- Barcode Scanner Integration
+- PDF Report Export
+- Excel Export
+- Supplier Management
+- Sales Module
+- Billing System
 
-## 👨‍💻 Author
+---
+
+## Author
 
 **Saurabh Nigam**
 
-GitHub: https://github.com/saurabhnigam4380-hub
+B.Tech CSE
+
+United College of Engineering and Research
+
+Prayagraj, Uttar Pradesh
+
+---
+
+## License
+
+This project is developed for educational purposes during Summer Training.
