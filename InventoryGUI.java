@@ -44,7 +44,8 @@ DefaultTableModel model;
 
         sidebar.setLayout(new GridLayout(8,1,10,10));
 
-        sidebar.add(createButton("Dashboard"));
+        JButton dashboardButton = createButton("Dashboard");
+        sidebar.add(dashboardButton);
 
         addProductButton = createButton("Add Product");
         sidebar.add(addProductButton);
@@ -61,7 +62,8 @@ DefaultTableModel model;
         reportButton = createButton("Generate Report");
         sidebar.add(reportButton);
 
-        sidebar.add(createButton("Low Stock"));
+        JButton lowStockButton = createButton("Low Stock");
+        sidebar.add(lowStockButton);
 
         exitButton = createButton("Exit");
         sidebar.add(exitButton);
@@ -100,14 +102,25 @@ DefaultTableModel model;
 
         add(content,BorderLayout.CENTER);
 
+        dashboardButton.addActionListener(e -> loadProducts());
+
         loadProducts();
         
         addProductButton.addActionListener(e -> addProduct());
+
         updateStockButton.addActionListener(e -> updateStock());
+
         deleteProductButton.addActionListener(e -> deleteProduct());
+
         searchButton.addActionListener(e -> searchProduct());
+
         reportButton.addActionListener(e -> generateReport());
+
         exitButton.addActionListener(e -> System.exit(0));
+
+        lowStockButton.addActionListener(e -> showLowStockProducts());
+
+        
         setVisible(true);
 
     }
@@ -308,7 +321,29 @@ private void updateStock() {
     }
 
 }
+private void showLowStockProducts() {
 
+    model.setRowCount(0);
+
+    try {
+
+        InventoryDAO dao = new InventoryDAO();
+
+        for (Product p : dao.getLowStockProducts()) {
+
+            model.addRow(new Object[] {
+                p.getId(),
+                p.getName(),
+                p.getCategory(),
+                p.getQuantity(),
+                p.getPrice()
+            });
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
 private void deleteProduct() {
 
     try {
