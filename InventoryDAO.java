@@ -113,7 +113,29 @@ public class InventoryDAO {
         }
         return products;
     }
+public List<Product> searchProducts(String keyword) throws SQLException {
 
+    String sql = "SELECT * FROM products WHERE name LIKE ? ORDER BY id";
+
+    List<Product> products = new ArrayList<>();
+
+    try (Connection conn = DBConnection.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setString(1, "%" + keyword + "%");
+
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+
+            products.add(mapRowToProduct(rs));
+
+        }
+
+    }
+
+    return products;
+}
     // Small helper so we don't repeat this ResultSet-reading code in every method above
     private Product mapRowToProduct(ResultSet rs) throws SQLException {
         return new Product(
